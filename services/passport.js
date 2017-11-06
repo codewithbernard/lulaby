@@ -24,9 +24,9 @@ passport.use(new SpotifyStrategy({
     if (existingUser) {
       return done(null, existingUser);
     }
-    
+
     const favoriteArtists = await spotify.getFavoriteArtists(accessToken);
-    const savedUser = await new User({ spotifyId: profile.id, favoriteArtists }).save();
+    const savedUser = await new User({ country: profile.country, spotifyId: profile.id, favoriteArtists }).save();
     done(null, savedUser);
   }
 ));
