@@ -15,9 +15,9 @@ class Landing extends Component {
       <div>
         <nav className="white">
           <div className="nav-wrapper container">
-            <a id="logo-container" href="#" className="brand-logo">Logo</a>
+            <a id="logo-container" href="#" className="brand-logo">Lullaby</a>
             <ul className="right hide-on-med-and-down">
-              <li><a href="#">Navbar Link</a></li>
+              <li><a href="#">Login with Spotify</a></li>
             </ul>
 
             <ul id="nav-mobile" className="side-nav">
@@ -31,9 +31,9 @@ class Landing extends Component {
           <div className="section no-pad-bot">
             <div className="container">
             <br/>
-              <h1 className="header center teal-text text-lighten-2">Parallax Template</h1>
+              <h1 className="header center teal-text text-lighten-2">Lullaby</h1>
               <div className="row center">
-                <h5 className="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                <h5 className="header col s12 light">Find people with similar taste in music like YOU</h5>
               </div>
               <div className="row center">
                 <a href="http://materializecss.com/getting-started.html" id="download-button" className="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
