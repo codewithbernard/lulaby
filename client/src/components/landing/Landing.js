@@ -33,7 +33,7 @@ class Landing extends Component {
             <br/>
               <h1 className="header center teal-text text-lighten-2">Lullaby</h1>
               <div className="row center">
-                <h5 className="header col s12 light">Find people with similar taste in music like YOU</h5>
+                <h4 className="header col s12 light">Find people with similar taste in music like YOU</h4>
               </div>
               <div className="row center">
                 <a href="http://materializecss.com/getting-started.html" id="download-button" className="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
