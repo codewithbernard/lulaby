@@ -4,10 +4,10 @@ const User = mongoose.model('users');
 const _ = require('lodash');
 
 module.exports = app => {
-  app.get('/users/find', async (req, res) => {
+  app.get('/api/users', async (req, res) => {
     let databaseMatchCount = 2;
     let totalMatchCount = 3;
-    
+
     const { favoriteArtists } = req.user;
     // Get users from database which has in his list top 2 artist
     const users = await User.find({spotifyId: { $ne: req.user.spotifyId }, favoriteArtists: { "$all" : _.slice(favoriteArtists, 0, databaseMatchCount)} });
