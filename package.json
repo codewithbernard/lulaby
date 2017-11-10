@@ -1,14 +1,6 @@
 {
   "name": "lullaby",
   "version": "1.0.0",
-  "proxy": {
-  "/auth/spotify": {
-    "target": "http://localhost:5000"
-  },
-  "/api/*": {
-    "target": "http://localhost:5000"
-  }
-},
   "description": "",
   "main": "index.js",
   "scripts": {
