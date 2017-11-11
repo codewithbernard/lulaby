@@ -6,7 +6,11 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   country: String,
   spotifyId: String,
-  favoriteArtists: [String]
+  favoriteArtists: [String],
+  about: String,
+  work: String,
+  school: String,
+  age: Number
 });
 
 mongoose.model('users', userSchema);
