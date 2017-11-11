@@ -20,4 +20,11 @@ module.exports = app => {
     // Return list of users with 3 matches
     res.send(matchedUsers);
   });
+
+  app.put('/api/users', async (req, res) => {
+    User.findOneAndUpdate({spotifyId: req.user.spotifyId}, req.body, (err, updatedUser) => {
+      if (err) return res.send(500, { error: err });
+      return res.send(updatedUser);
+    });
+  });
 }
