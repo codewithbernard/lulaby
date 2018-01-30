@@ -10,6 +10,11 @@ module.exports = app => {
     res.redirect('/auth/currentUser');
   });
 
+  app.get('/auth/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+  });
+
   app.get('/auth/currentUser', (req, res) => {
     res.send({
       spotifyId: req.user.spotifyId
