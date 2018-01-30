@@ -8,7 +8,8 @@ const userSchema = new Schema({
   spotifyId: String,
   favoriteArtists: [String],
   about: String,
-  age: Number
+  age: Number,
+  image: String
 });
 
 mongoose.model('users', userSchema);
