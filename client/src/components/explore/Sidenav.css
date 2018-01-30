@@ -12,6 +12,10 @@ ul.side-nav.fixed li.logo {
     margin-bottom: 32px;
 }
 
+#logo-container-image {
+  width: 80px;
+}
+
 #logo-container:hover {
     background-color: transparent;
 }

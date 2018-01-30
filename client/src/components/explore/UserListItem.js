@@ -9,8 +9,8 @@ class UserListItem extends Component {
         <div className="user-list-item-card card">
           <div className="card-image">
             <img className="user-list-item-card-image" src={this.props.user.image} />
-            <span className="card-title">{this.props.user.spotifyId}</span>
-            <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+            <span className="card-title">{this.props.user.spotifyId}, {this.props.user.age}</span>
+            <a className="btn-floating halfway-fab waves-effect waves-teal teal lighten-2"><i className="material-icons">message</i></a>
           </div>
           <div className="card-content">
             <p>{this.props.user.about}</p>
