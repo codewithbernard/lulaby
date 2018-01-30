@@ -12,7 +12,7 @@ class Sidenav extends Component {
             <object id="front-page-logo" type="image/svg+xml" data="/logo.svg">Your browser does not support SVG</object>
           </a>
         </li>
-        <NavLink className="waves-effect waves-teal" to="/explore/users"><i className="material-icons">whatshot</i> Look around</NavLink>
+        <NavLink className="waves-effect waves-teal" to="/explore/users"><i className="material-icons">whatshot</i> Find users</NavLink>
         <NavLink className="waves-effect waves-teal" to="/explore/me"><i className="material-icons">person</i> My profile</NavLink>
       </ul>
     );
