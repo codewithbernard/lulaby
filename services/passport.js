@@ -17,7 +17,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new SpotifyStrategy({
     clientID: keys.spotifyClientId,
     clientSecret: keys.spotifyClientSecret,
-    callbackURL: "http://localhost:5000/auth/spotify/callback"
+    callbackURL: "http://localhost:3000/auth/spotify/callback"
   },
   async (accessToken, refreshToken, profile, done) => {
     const existingUser = await User.findOne({ spotifyId: profile.id });
