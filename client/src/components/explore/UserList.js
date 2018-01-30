@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import _ from 'lodash';
 
+import UserListItem from './UserListItem';
+
 class UserList extends Component {
   componentDidMount() {
     this.props.fetchUsers();
@@ -10,14 +12,16 @@ class UserList extends Component {
 
   renderUsers() {
     return _.map(this.props.users, user => {
-      return <li key={user.spotifyId}>{user.spotifyId}</li>;
+      return <UserListItem key={user.spotifyId} user={user} />;
     });
   }
 
   render() {
     return(
       <main>
-        <ul>{this.renderUsers()}</ul>
+        <div className="row">
+          {this.renderUsers()}
+        </div>
       </main>
     );
   }
