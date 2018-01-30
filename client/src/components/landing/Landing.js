@@ -18,7 +18,7 @@ class Landing extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.authenticated) {
-      this.context.router.history.push('/explore');
+      this.context.router.history.push('/explore/users');
     }
   }
 
