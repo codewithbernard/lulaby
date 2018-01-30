@@ -2,9 +2,10 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const _ = require('lodash');
+const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = app => {
-  app.get('/api/users', async (req, res) => {
+  app.get('/api/users', requireLogin, async (req, res) => {
     let databaseMatchCount = 2;
     let totalMatchCount = 3;
 
@@ -21,7 +22,7 @@ module.exports = app => {
     res.send(matchedUsers);
   });
 
-  app.put('/api/users', async (req, res) => {
+  app.put('/api/users', requireLogin, async (req, res) => {
     User.findOneAndUpdate({spotifyId: req.user.spotifyId}, req.body, (err, updatedUser) => {
       if (err) return res.send(500, { error: err });
       return res.send(updatedUser);

@@ -4,13 +4,14 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
+import requireAuth from './auth/requireAuth';
 import Landing from './landing/Landing';
 import UserList from './explore/UserList';
 import Navbar from './explore/Navbar';
 import Sidenav from './explore/Sidenav';
 
 class App extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchUser();
   }
 
@@ -19,9 +20,9 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Route exact path="/" component={Landing} />
-          <Route path="/explore" component={Navbar} />
-          <Route path="/explore" component={Sidenav} />
-          <Route path="/explore/users" component={UserList} />
+          <Route path="/explore" component={requireAuth(Navbar)} />
+          <Route path="/explore" component={requireAuth(Sidenav)} />
+          <Route path="/explore/users" component={requireAuth(UserList)} />
         </div>
       </BrowserRouter>
     );

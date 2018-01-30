@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import $ from 'jquery';
 
 import 'materialize-css/dist/css/materialize.min.css'
 import './Landing.css';
 
 class Landing extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   componentDidMount() {
     $('.button-collapse').sideNav();
     $('.parallax').parallax();
+  }
+
+  componentWillUpdate(nextProps) {
+    if (nextProps.authenticated) {
+      this.context.router.history.push('/explore');
+    }
   }
 
   render() {
@@ -147,4 +159,8 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+function mapStateToProps({auth}) {
+  return { authenticated: auth }
+}
+
+export default connect(mapStateToProps)(Landing);
