@@ -8,8 +8,6 @@ const userSchema = new Schema({
   spotifyId: String,
   favoriteArtists: [String],
   about: String,
-  work: String,
-  school: String,
   age: Number
 });
 

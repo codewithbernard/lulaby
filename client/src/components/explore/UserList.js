@@ -10,9 +10,7 @@ class UserList extends Component {
 
   renderUsers() {
     return _.map(this.props.users, user => {
-      return(
-        <li key={user.spotifyId}>{user.spotifyId}</li>
-      )
+      return <li key={user.spotifyId}>{user.spotifyId}</li>;
     });
   }
 
