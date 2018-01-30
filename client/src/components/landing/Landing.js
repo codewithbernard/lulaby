@@ -17,11 +17,11 @@ class Landing extends Component {
           <div className="nav-wrapper container">
             <a id="logo-container" href="#" className="brand-logo">Lullaby</a>
             <ul className="right hide-on-med-and-down">
-              <li><a href="#">Login with Spotify</a></li>
+              <li><a href="/auth/spotify">Login with Spotify</a></li>
             </ul>
 
             <ul id="nav-mobile" className="side-nav">
-              <li><a href="#">Navbar Link</a></li>
+              <li><a href="/auth/spotify">Login with Spotify</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="material-icons">menu</i></a>
           </div>
@@ -36,7 +36,7 @@ class Landing extends Component {
                 <h4 className="header col s12 light">Find people with similar taste in music like YOU</h4>
               </div>
               <div className="row center">
-                <a href="http://materializecss.com/getting-started.html" id="download-button" className="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+                <a href="/auth/spotify" id="download-button" className="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
               </div>
             <br/>
 
