@@ -10,7 +10,7 @@ class MyProfile extends Component {
     return(
       <div className="input-field col xl6">
         <i className="material-icons prefix">favorite</i>
-        <input id="age" type="number" className="validate" {...field.input} />
+        <input id="age" type="text" {...field.input} />
         <label htmlFor="age">Age</label>
       </div>
     );
@@ -40,7 +40,8 @@ class MyProfile extends Component {
   }
 
   render() {
-    return(
+    if (this.props.auth) {
+      return(
         <main>
           <div id="my-profile" className="row">
             <form onSubmit={this.props.handleSubmit(this.onSubmit.bind(this))}>
@@ -63,7 +64,7 @@ class MyProfile extends Component {
                 <div className="col offset-xl1 xl5">
                   <div className="card">
                     <div className="card-image">
-                      <img src="/landingBackground/background1.jpg" />
+                      <img src={this.props.auth.image} />
                       <Field
                         label="image"
                         name="image"
@@ -71,7 +72,7 @@ class MyProfile extends Component {
                       />
                     </div>
                     <div className="card-content">
-                      <span className="card-title">Card Title</span>
+                      <span className="card-title">{this.props.auth.spotifyId}</span>
                     </div>
                   </div>
                 </div>
@@ -79,18 +80,23 @@ class MyProfile extends Component {
             </form>
           </div>
         </main>
-    );
+      );
+    }
+    return null;
   }
 }
 
 function mapStateToProps({auth}) {
   return {
-    auth
+    auth,
+    initialValues: auth
   }
 }
 
-export default reduxForm({
+MyProfile = reduxForm({
 	form: 'MyProfileForm'
-})(
-	connect(mapStateToProps, actions)(MyProfile)
-);
+})(MyProfile)
+
+MyProfile = connect(mapStateToProps,actions)(MyProfile)
+
+export default MyProfile;

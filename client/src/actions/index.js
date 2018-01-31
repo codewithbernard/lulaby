@@ -12,8 +12,8 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const updateUser = (user, values) => async dispatch => {
-    // Upload iamge to cloudinare
-    if (values.image) {
+    // Upload iamge to cloudinare if new image was chosen
+    if (values.image.item) {
       let data = new FormData();
       data.append('upload_preset', 'snwikmyi');
       data.append('file', values.image.item(0))
