@@ -58,7 +58,7 @@ class MyProfile extends Component {
                     component={this.renderAbout}
                   />
                   <div className="input-field col s12">
-                    <button id="submit-profile-changes" type="submit" className="waves-effect waves-light btn">save</button>
+                    <button id="submit-profile-changes" type="submit" className="waves-effect waves-light btn"}>Save changes</button>
                   </div>
                 </div>
                 <div className="col offset-xl1 xl5">

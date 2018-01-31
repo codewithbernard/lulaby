@@ -20,5 +20,6 @@ export const updateUser = (user, values) => async dispatch => {
       let res = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_ID}/image/upload`, data);
       values.image = res.data.url;
     }
-    axios.put(`/api/users/${user}`, values);
+    let res = await axios.put(`/api/users/${user}`, values);
+    dispatch({type: FETCH_USER, payload: res.data });
 };
