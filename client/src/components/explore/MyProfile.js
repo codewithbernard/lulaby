@@ -6,6 +6,8 @@ import * as actions from '../../actions'
 import './MyProfile.css';
 
 class MyProfile extends Component {
+  state = { image: null };
+
   renderAge(field) {
     return(
       <div className="input-field col xl6">
@@ -30,7 +32,7 @@ class MyProfile extends Component {
     return(
       <button className="file-field btn-floating halfway-fab waves-effect waves-teal teal lighten-2">
         <i className="material-icons">edit</i>
-        <input id="image" type="file" onDrop={field.input.onDrop} onChange={field.input.onChange} onFocus={field.input.onFocus} />
+        <input id="image" type="file" onDrop={field.input.onDrop} onChange={event => this.onImageChange(event, field)} onFocus={field.input.onFocus} />
       </button>
     );
   }
@@ -47,6 +49,17 @@ class MyProfile extends Component {
 
   onSubmit(values) {
     this.props.updateUser(this.props.auth.spotifyId, values);
+  }
+
+  onImageChange(event, field) {
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      this.setState({
+        image: reader.result
+      });
+    }
+    reader.readAsDataURL(event.target.files[0]);
+    field.input.onChange(event);
   }
 
   render() {
@@ -74,7 +87,7 @@ class MyProfile extends Component {
                 <div className="col offset-xl1 xl5">
                   <div className="card">
                     <div className="card-image">
-                      <img src={this.props.auth.image} alt=""/>
+                      <img src={this.state.image ? this.state.image : this.props.auth.image} alt=""/>
                       <Field
                         label="image"
                         name="image"
