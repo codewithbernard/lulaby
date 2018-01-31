@@ -30,7 +30,7 @@ class MyProfile extends Component {
     return(
       <button className="file-field btn-floating halfway-fab waves-effect waves-teal teal lighten-2">
         <i className="material-icons">edit</i>
-        <input id="uploadImage" type="file" onDrop={field.input.onDrop} onChange={field.input.onChange} onFocus={field.input.onFocus} />
+        <input id="image" type="file" onDrop={field.input.onDrop} onChange={field.input.onChange} onFocus={field.input.onFocus} />
       </button>
     );
   }
@@ -65,8 +65,8 @@ class MyProfile extends Component {
                     <div className="card-image">
                       <img src="/landingBackground/background1.jpg" />
                       <Field
-                        label="uploadImage"
-                        name="uploadImage"
+                        label="image"
+                        name="image"
                         component={this.renderUploadImage}
                       />
                     </div>
