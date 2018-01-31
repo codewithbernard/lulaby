@@ -47,8 +47,9 @@ class MyProfile extends Component {
     }
   }
 
-  onSubmit(values) {
-    this.props.updateUser(this.props.auth.spotifyId, values);
+  async onSubmit(values) {
+    await this.props.updateUser(this.props.auth.spotifyId, values);
+    this.props.history.push("/explore/users");
   }
 
   onImageChange(event, field) {
