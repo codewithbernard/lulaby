@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../../actions'
-import $ from 'jquery';
 
 import './MyProfile.css';
 
 class MyProfile extends Component {
+  state = { image: null };
+
   renderAge(field) {
     return(
       <div className="input-field col xl6">
@@ -34,6 +35,16 @@ class MyProfile extends Component {
         <input id="image" type="file" onDrop={field.input.onDrop} onChange={field.input.onChange} onFocus={field.input.onFocus} />
       </button>
     );
+  }
+
+  renderLoading() {
+    if (this.props.load) {
+      return(
+        <div className="progress">
+            <div className="indeterminate"></div>
+        </div>
+      );
+    }
   }
 
   onSubmit(values) {
@@ -65,13 +76,14 @@ class MyProfile extends Component {
                 <div className="col offset-xl1 xl5">
                   <div className="card">
                     <div className="card-image">
-                      <img src={this.props.auth.image} />
+                      <img src={this.props.auth.image} alt=""/>
                       <Field
                         label="image"
                         name="image"
-                        component={this.renderUploadImage}
+                        component={this.renderUploadImage.bind(this)}
                       />
                     </div>
+                    {this.renderLoading()}
                     <div className="card-content">
                       <span className="card-title">{this.props.auth.spotifyId}</span>
                     </div>
@@ -87,10 +99,11 @@ class MyProfile extends Component {
   }
 }
 
-function mapStateToProps({auth}) {
+function mapStateToProps({ auth, load }) {
   return {
     auth,
-    initialValues: auth
+    load,
+    initialValues: auth,
   }
 }
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USERS, FETCH_USER } from './types';
+import { FETCH_USERS, FETCH_USER, INIT_LOADING, FINISH_LOADING } from './types';
 
 export const fetchUsers = () => async dispatch => {
   const res = await axios.get('/api/users');
@@ -14,6 +14,7 @@ export const fetchUser = () => async dispatch => {
 export const updateUser = (user, values) => async dispatch => {
     // Upload iamge to cloudinare if new image was chosen
     if (values.image.item) {
+      dispatch({type: INIT_LOADING});
       let data = new FormData();
       data.append('upload_preset', process.env.REACT_APP_UPLOAD_PRESET);
       data.append('file', values.image.item(0))
@@ -22,4 +23,5 @@ export const updateUser = (user, values) => async dispatch => {
     }
     let res = await axios.put(`/api/users/${user}`, values);
     dispatch({type: FETCH_USER, payload: res.data });
+    dispatch({type: FINISH_LOADING});
 };

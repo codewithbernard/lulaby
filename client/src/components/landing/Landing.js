@@ -27,7 +27,7 @@ class Landing extends Component {
       <div>
         <nav className="white">
           <div className="nav-wrapper container">
-            <a id="logo-container" href="#" className="brand-logo">Lullaby</a>
+            <a id="logo-container" href="/" className="brand-logo">Lullaby</a>
             <ul className="right hide-on-med-and-down">
               <li><a href="/auth/spotify">Login with Spotify</a></li>
             </ul>
