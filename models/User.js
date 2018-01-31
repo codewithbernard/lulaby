@@ -9,7 +9,7 @@ const userSchema = new Schema({
   favoriteArtists: [String],
   about: String,
   age: Number,
-  image: String
+  image: {type: String, default: "http://res.cloudinary.com/dypjti8qj/image/upload/v1517404949/bjyxh2fzcp58kbufm8rb.png"}
 });
 
 mongoose.model('users', userSchema);
