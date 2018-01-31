@@ -2,6 +2,6 @@
   margin-top: 35px;
 }
 
-#upload-image {
-  display: none;
+#submit-profile-changes {
+  width: inherit;
 }

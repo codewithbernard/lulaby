@@ -7,7 +7,10 @@ export const fetchUsers = () => async dispatch => {
 }
 
 export const fetchUser = () => async dispatch => {
-    console.log('Fetching');
     const res = await axios.get('/auth/currentUser');
     dispatch({ type: FETCH_USER, payload: res.data });
+};
+
+export const updateUser = (values) => async dispatch => {
+    await axios.put('/api/users');
 };
