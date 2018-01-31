@@ -7,12 +7,6 @@ import $ from 'jquery';
 import './MyProfile.css';
 
 class MyProfile extends Component {
-  componentDidMount() {
-    // $(document).ready(function() {
-    //   Materialize.updateTextFields();
-    // });
-  }
-
   renderAge(field) {
     return(
       <div className="input-field col xl6">
