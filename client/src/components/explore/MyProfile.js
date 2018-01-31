@@ -30,13 +30,13 @@ class MyProfile extends Component {
     return(
       <button className="file-field btn-floating halfway-fab waves-effect waves-teal teal lighten-2">
         <i className="material-icons">edit</i>
-        <input id="upload-image" type="file" onDrop={field.input.onDrop} onChange={field.input.onChange} onFocus={field.input.onFocus} />
+        <input id="uploadImage" type="file" onDrop={field.input.onDrop} onChange={field.input.onChange} onFocus={field.input.onFocus} />
       </button>
     );
   }
 
   async onSubmit(values) {
-    this.props.updateUser(values);
+    this.props.updateUser(this.props.auth.spotifyId, values);
   }
 
   render() {
@@ -65,8 +65,8 @@ class MyProfile extends Component {
                     <div className="card-image">
                       <img src="/landingBackground/background1.jpg" />
                       <Field
-                        label="upload-image"
-                        name="upload-image"
+                        label="uploadImage"
+                        name="uploadImage"
                         component={this.renderUploadImage}
                       />
                     </div>
@@ -83,8 +83,14 @@ class MyProfile extends Component {
   }
 }
 
+function mapStateToProps({auth}) {
+  return {
+    auth
+  }
+}
+
 export default reduxForm({
 	form: 'MyProfileForm'
 })(
-	connect(null, actions)(MyProfile)
+	connect(mapStateToProps, actions)(MyProfile)
 );

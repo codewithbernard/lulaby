@@ -11,6 +11,14 @@ export const fetchUser = () => async dispatch => {
     dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const updateUser = (values) => async dispatch => {
-    await axios.put('/api/users');
+export const updateUser = (user, values) => async dispatch => {
+    // Upload iamge to cloudinare
+    let data = new FormData();
+    data.append('upload_preset', 'snwikmyi');
+    data.append('file', values.uploadImage.item(0))
+    let res = await axios.post('https://api.cloudinary.com/v1_1/dypjti8qj/image/upload', data);
+    if (res.data.url) {
+      values.uploadImage = res.data.url;
+      axios.put(`/api/users/${user.spotifyId}`, values);
+    }
 };
