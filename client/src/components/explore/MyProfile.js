@@ -81,7 +81,8 @@ class MyProfile extends Component {
                     component={this.renderAbout}
                   />
                   <div className="input-field col s12">
-                    <button id="submit-profile-changes" type="submit" className="waves-effect waves-light btn">Save changes</button>
+                    <button type="submit" className="my-profile-form-button waves-effect waves-light btn">Save changes</button>
+                    {this.state.image ? <p className="center-align">Click on the button to make sure image is uploaded properly</p> : null}
                   </div>
                 </div>
                 <div className="col offset-xl1 xl5">
