@@ -2,16 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../../actions'
+import $ from 'jquery';
 
 import './MyProfile.css';
 
 class MyProfile extends Component {
+  componentDidMount() {
+    // $(document).ready(function() {
+    //   Materialize.updateTextFields();
+    // });
+  }
+
   renderAge(field) {
     return(
       <div className="input-field col xl6">
         <i className="material-icons prefix">favorite</i>
         <input id="age" type="text" {...field.input} />
-        <label htmlFor="age">Age</label>
+        <label className="active" htmlFor="age">Age</label>
       </div>
     );
   }
@@ -21,7 +28,7 @@ class MyProfile extends Component {
       <div className="input-field col s12">
         <i className="material-icons prefix">child_care</i>
         <textarea id="about" className="materialize-textarea" {...field.input}></textarea>
-        <label htmlFor="about">About</label>
+        <label className="active" htmlFor="about">About</label>
       </div>
     );
   }
