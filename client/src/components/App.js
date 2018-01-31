@@ -9,6 +9,7 @@ import Landing from './landing/Landing';
 import UserList from './explore/UserList';
 import Navbar from './explore/Navbar';
 import Sidenav from './explore/Sidenav';
+import MyProfile from './explore/MyProfile';
 
 class App extends Component {
   componentWillMount() {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/explore" component={requireAuth(Navbar)} />
           <Route path="/explore" component={requireAuth(Sidenav)} />
           <Route path="/explore/users" component={requireAuth(UserList)} />
+          <Route path="/explore/me" component={requireAuth(MyProfile)} />
         </div>
       </BrowserRouter>
     );
