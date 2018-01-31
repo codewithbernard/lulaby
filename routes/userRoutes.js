@@ -23,9 +23,8 @@ module.exports = app => {
   });
 
   app.put('/api/users/:id', requireLogin, async (req, res) => {
-    User.findOneAndUpdate({spotifyId: req.params.id}, req.body, (err, updatedUser) => {
-      if (err) return res.send(500, { error: err });
-      return res.send(updatedUser);
-    });
+    await User.findOneAndUpdate({spotifyId: req.params.id}, req.body);
+    let newUser = await User.findOne({spotifyId: req.params.id});
+    res.send(newUser);
   });
 }
