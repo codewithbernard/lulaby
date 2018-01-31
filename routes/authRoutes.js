@@ -17,9 +17,7 @@ module.exports = app => {
 
   app.get('/auth/currentUser', (req, res) => {
     if (req.user) {
-      res.send({
-        spotifyId: req.user.spotifyId
-      });
+      res.send(req.user);
     } else {
       res.send(null);
     }
