@@ -6,8 +6,6 @@ import * as actions from '../../actions'
 import './MyProfile.css';
 
 class MyProfile extends Component {
-  state = { image: null };
-
   renderAge(field) {
     return(
       <div className="input-field col xl6">
