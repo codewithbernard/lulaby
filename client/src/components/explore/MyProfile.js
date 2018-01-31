@@ -36,7 +36,7 @@ class MyProfile extends Component {
     );
   }
 
-  async onSubmit(values) {
+  onSubmit(values) {
     this.props.updateUser(this.props.auth.spotifyId, values);
   }
 
