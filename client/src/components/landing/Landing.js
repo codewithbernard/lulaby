@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 import socket from '../../socket';
+import * as actions from '../../actions';
 
 import 'materialize-css/dist/css/materialize.min.css'
 import './Landing.css';
@@ -21,7 +22,7 @@ class Landing extends Component {
     if (nextProps.authenticated) {
       this.context.router.history.push('/explore/users');
       socket.on(`notify ${nextProps.authenticated.spotifyId}`, msg => {
-        console.log('You were notified');
+        this.props.fetchUser();
       });
     }
   }
@@ -167,4 +168,4 @@ function mapStateToProps({auth}) {
   return { authenticated: auth }
 }
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, actions)(Landing);
