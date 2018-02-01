@@ -13,6 +13,7 @@ class Sidenav extends Component {
           </a>
         </li>
         <NavLink className="waves-effect waves-teal" to="/explore/users"><i className="material-icons">whatshot</i> Find users</NavLink>
+        <NavLink className="waves-effect waves-teal" to="/explore/requests"><i className="material-icons">notifications</i><span className="new badge">4</span> Friend requests</NavLink>
         <NavLink className="waves-effect waves-teal" to="/explore/me"><i className="material-icons">person</i> My profile</NavLink>
       </ul>
     );

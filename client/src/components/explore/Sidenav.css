@@ -3,10 +3,6 @@ ul.side-nav.fixed li.logo {
     margin-top: 32px;
 }
 
-.side-nav {
-    width: 250px !important;
-}
-
 #logo-container {
     height: 80px;
     margin-bottom: 32px;
@@ -24,7 +20,7 @@ ul.side-nav.fixed li.logo {
 
 /*  Offset other content*/
 header, main, footer {
-  padding-left: 250px;
+  padding-left: 300px;
 }
 
 @media only screen and (max-width : 992px) {
