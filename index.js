@@ -10,6 +10,9 @@ require('./services/passport');
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -26,4 +29,8 @@ require('./routes/userRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT);
+io.on('connection', socket => {
+  console.log('USer connected');
+});
+
+http.listen(PORT);

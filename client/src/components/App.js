@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import io from 'socket.io-client';
 
 import requireAuth from './auth/requireAuth';
 import Landing from './landing/Landing';
@@ -14,6 +15,7 @@ import MyProfile from './explore/MyProfile';
 class App extends Component {
   componentWillMount() {
     this.props.fetchUser();
+    const socket = io(`http://localhost:${process.env.PORT || 5000}`);
   }
 
   render() {
