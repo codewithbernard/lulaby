@@ -26,6 +26,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
+require('./routes/notificationRoutes')(app, io);
 
 const PORT = process.env.PORT || 5000;
 
