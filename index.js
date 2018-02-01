@@ -30,7 +30,7 @@ require('./routes/userRoutes')(app);
 const PORT = process.env.PORT || 5000;
 
 io.on('connection', socket => {
-  console.log('USer connected');
+  console.log('User connected');
 });
 
 http.listen(PORT);

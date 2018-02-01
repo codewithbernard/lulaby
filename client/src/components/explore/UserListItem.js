@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import socket from '../../socket';
 
 import './UserListItem.css';
 
@@ -10,7 +11,7 @@ class UserListItem extends Component {
           <div className="card-image">
             <img className="user-list-item-card-image" src={this.props.user.image} alt=""/>
             <span className="card-title">{this.props.user.spotifyId}, {this.props.user.age}</span>
-            <a className="btn-floating halfway-fab waves-effect waves-teal teal lighten-2"><i className="material-icons">message</i></a>
+            <a href={`/api/notify/${this.props.user.spotifyId}`} className="btn-floating halfway-fab waves-effect waves-teal teal lighten-2"><i className="material-icons">message</i></a>
           </div>
           <div className="card-content">
             <p>{this.props.user.about}</p>

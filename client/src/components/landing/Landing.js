@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
+import socket from '../../socket';
 
 import 'materialize-css/dist/css/materialize.min.css'
 import './Landing.css';
@@ -19,6 +20,9 @@ class Landing extends Component {
   componentWillUpdate(nextProps) {
     if (nextProps.authenticated) {
       this.context.router.history.push('/explore/users');
+      socket.on(`notify ${nextProps.authenticated.spotifyId}`, msg => {
+        console.log('You were notified');
+      });
     }
   }
 
