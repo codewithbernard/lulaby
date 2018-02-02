@@ -10,7 +10,8 @@ const userSchema = new Schema({
   about: String,
   age: Number,
   image: {type: String, default: "http://res.cloudinary.com/dypjti8qj/image/upload/v1517404949/bjyxh2fzcp58kbufm8rb.png"},
-  friendRequests: []
+  friendRequests: [],
+  friends: []
 });
 
 mongoose.model('users', userSchema);

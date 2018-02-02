@@ -10,6 +10,7 @@ import UserList from './explore/UserList';
 import Navbar from './explore/Navbar';
 import Sidenav from './explore/Sidenav';
 import MyProfile from './explore/MyProfile';
+import RequestList from './explore/RequestList';
 
 class App extends Component {
   componentWillMount() {
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/explore" component={requireAuth(Sidenav)} />
           <Route path="/explore/users" component={requireAuth(UserList)} />
           <Route path="/explore/me" component={requireAuth(MyProfile)} />
+          <Route path="/explore/requests" component={requireAuth(RequestList)} />
         </div>
       </BrowserRouter>
     );
