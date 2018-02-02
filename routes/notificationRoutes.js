@@ -2,7 +2,6 @@ const requireLogin = require('../middlewares/requireLogin');
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
-
 module.exports = (app, io) => {
   app.get('/api/notify/:id', requireLogin, async (req, res) => {
     // Find the user with spotifyId
