@@ -27,12 +27,15 @@ export const updateUser = (user, values) => async dispatch => {
 };
 
 export const acceptFriendRequest = (user, friend) => async dispatch => {
+  let tempUser = JSON.parse(JSON.stringify(user));
   // Remove friendRequest
   user.friendRequests = user.friendRequests.filter(user => user.spotifyId !== friend.spotifyId);
   // Add user to friends
   user.friends.push(friend);
   // Update on server
   let res = await axios.put(`/api/users/${user.spotifyId}`, user);
+  friend.friends.push(tempUser);
+  await axios.put(`/api/users/${friend.spotifyId}`, friend);
   // Dispatch new user
   dispatch({type: FETCH_USER, payload: res.data });
 };
