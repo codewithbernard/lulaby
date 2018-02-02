@@ -16,13 +16,17 @@ class UserListItem extends Component {
     return this.props.user.friendRequests.filter(user => user.spotifyId === this.props.auth.spotifyId).length > 0;
   }
 
+  isFriend() {
+    return this.props.auth.friends.filter(user => user.spotifyId === this.props.user.spotifyId).length > 0;
+  }
+
   // Check if user already sent friend request to you
   friendRequestedYou() {
     return this.props.auth.friendRequests.filter(user => user.spotifyId === this.props.user.spotifyId).length > 0;
   }
 
   render() {
-    if (!this.friendRequestedYou()) {
+    if (!this.friendRequestedYou() && !this.isFriend()) {
       return(
         <div className="col s12 m6 l6 xl4">
           <div className="user-list-item-card card">
