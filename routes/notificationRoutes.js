@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
 module.exports = (app, io) => {
-  app.get('/api/notify/:id', requireLogin, async (req, res) => {
+  app.get('/api/friendRequest/:id', requireLogin, async (req, res) => {
     // Find the user with spotifyId
     let user = await User.findOne({spotifyId: req.params.id});
     // Push the user from request to his friend requests and save to db
@@ -12,5 +12,11 @@ module.exports = (app, io) => {
     // Notify user via socket to fetch for update
     io.emit(`notify ${req.params.id}`, "");
     res.send(newUser);
+  });
+
+  app.get('/api/notify/:id', requireLogin, async (req, res) => {
+    // Notify user via socket to fetch for update
+    io.emit(`notify ${req.params.id}`, "");
+    res.send(null);
   });
 }

@@ -36,6 +36,7 @@ export const acceptFriendRequest = (user, friend) => async dispatch => {
   let res = await axios.put(`/api/users/${user.spotifyId}`, user);
   friend.friends.push(tempUser);
   await axios.put(`/api/users/${friend.spotifyId}`, friend);
+  axios.get(`/api/notify/${friend.spotifyId}`);
   // Dispatch new user
   dispatch({type: FETCH_USER, payload: res.data });
 };

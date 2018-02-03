@@ -7,7 +7,7 @@ import './UserListItem.css';
 
 class UserListItem extends Component {
   async handleButtonClick() {
-    await axios.get(`/api/notify/${this.props.user.spotifyId}`);
+    await axios.get(`/api/friendRequest/${this.props.user.spotifyId}`);
     this.props.fetchUsers();
   }
 
