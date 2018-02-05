@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class RequestListItem extends Component {
   render() {
@@ -8,7 +9,7 @@ class RequestListItem extends Component {
           <div className="card-image">
             <img className="user-list-item-card-image" src={this.props.user.image} alt=""/>
             <span className="card-title">{this.props.user.spotifyId}, {this.props.user.age}</span>
-            <button className="btn-floating halfway-fab waves-effect waves-teal teal lighten-2"><i className="material-icons">message</i></button>
+            <Link to={`/explore/chat/${this.props.user.spotifyId}`} className="btn-floating halfway-fab waves-effect waves-teal teal lighten-2"><i className="material-icons">message</i></Link>
           </div>
           <div className="card-content">
             <p>{this.props.user.about}</p>
