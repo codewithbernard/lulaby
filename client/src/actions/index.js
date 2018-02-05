@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { FETCH_USERS, FETCH_USER, INIT_LOADING, FINISH_LOADING } from './types';
+import { FETCH_USERS, FETCH_USER, INIT_LOADING, FINISH_LOADING, FETCH_MESSAGES } from './types';
 
+// Users
 export const fetchUsers = () => async dispatch => {
   const res = await axios.get('/api/users');
   dispatch({type: FETCH_USERS, payload: res.data });
@@ -36,7 +37,21 @@ export const acceptFriendRequest = (user, friend) => async dispatch => {
   let res = await axios.put(`/api/users/${user.spotifyId}`, user);
   friend.friends.push(tempUser);
   await axios.put(`/api/users/${friend.spotifyId}`, friend);
+  axios.post(`/api/message/${friend.spotifyId}`);
   axios.get(`/api/notify/${friend.spotifyId}`);
   // Dispatch new user
   dispatch({type: FETCH_USER, payload: res.data });
 };
+
+// Messages
+export const fetchMessages = (friendId) => async dispatch => {
+  const res = await axios.get(`/api/message/get/${friendId}`);
+  dispatch({type: FETCH_MESSAGES, payload: res.data });
+}
+
+export const sendMessage = (friendId, messageText) => async dispatch => {
+  await axios.put(`/api/message/get/${friendId}`, {newMessage: messageText});
+  axios.get(`/api/message/notify/${friendId}`);
+  const res = await axios.get(`/api/message/get/${friendId}`);
+  dispatch({type: FETCH_MESSAGES, payload: res.data });
+}
