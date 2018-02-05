@@ -5,3 +5,6 @@ Find people around you who have similar taste in music like you. Lullaby utilize
 **Front-end** - React with Redux for state management and socket.io for real time communication
 
 **Back-end** - Express + MongoDB and socket.io
+
+## Demo
+Working example is available at http://lulaby.herokuapp.com
