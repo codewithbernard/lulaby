@@ -11,13 +11,16 @@ class FriendList extends Component {
   }
 
   render() {
-    return(
-      <main>
-        <div className="row">
-          {this.renderUsers()}
-        </div>
-      </main>
-    );
+    if (this.props.auth) {
+      return(
+        <main>
+          <div className="row">
+            {this.renderUsers()}
+          </div>
+        </main>
+      );
+    }
+    return null;
   }
 }
 

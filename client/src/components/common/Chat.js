@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ChatFeed, Message } from 'react-chat-ui'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import socket from '../../socket';
-import { animateScroll } from "react-scroll";
+import ScrollArea from 'react-scrollbar';
+import ChatContent from './ChatContent';
 import * as actions from '../../actions'
 
 import './Chat.css';
@@ -18,9 +18,11 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    socket.on(`notify - message ${this.props.user.spotifyId}`, msg => {
-      this.props.fetchMessages(this.props.match.params.id);
-    });
+    if (this.props.user) {
+      socket.on(`notify - message ${this.props.user.spotifyId}`, msg => {
+        this.props.fetchMessages(this.props.match.params.id);
+      });
+    }
   }
 
   handleSubmit(event) {
@@ -36,18 +38,18 @@ class Chat extends Component {
           <div className="col s12">
             <div id="chat-header">
               <Link to="/explore/friends" className="btn-floating btn-large waves-effect waves-teal teal"><i className="material-icons">arrow_back</i></Link>
-              <p id="chat-header-text" className="flow-text center-align">Your conversation history with XY</p>
+              <p id="chat-header-text" className="flow-text center-align">Your conversation history</p>
             </div>
-            <div id="chat-container" >
-              <ChatFeed
-                messages={this.props.messages}
-                hasInputField={false}
-                showSenderName
-                bubblesCentered={false}
-                bubbleStyles={bubbleStyles}
-                >
-                </ChatFeed>
-            </div>
+            <ScrollArea
+              id="chat-container"
+              style={{height: "calc(100vh - 291px)"}}
+              speed={0.8}
+              smoothScrolling={true}
+              contentClassName="chat-content"
+              horizontal={false}
+              >
+              <ChatContent className="chat-content" messages={this.props.messages}/>
+            </ScrollArea>
           </div>
           <form id="chat-message-input" onSubmit={e => this.handleSubmit(e)} className="col s12">
             <div className="row">
@@ -63,16 +65,6 @@ class Chat extends Component {
     );
   }
 }
-
- const bubbleStyles = {
-   text: {
-     fontSize: 30
-   },
-   chatbubble: {
-     borderRadius: 70,
-     padding: 40
-   }
- }
 
  function mapStateToProps(state) {
    return {
